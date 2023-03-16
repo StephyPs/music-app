@@ -7,21 +7,16 @@
 }
 
 .search-container {
-  width: 280px;
+  width: 300px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
-input {
-  width: 220px;
+#search {
+  width: 300px;
 }
 
 .search-inner {
   display: flex;
-}
-table,td{
-  border: 1px solid black;
-}
-table{
-  margin-top:10px;
 }
