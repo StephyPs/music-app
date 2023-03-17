@@ -31,7 +31,7 @@ const SearchResults = () => {
     >
       {
         <TableContainer component={Paper}>
-          <Table  size="small" aria-label="a dense table">
+          <Table data-testid="searchResultsTable" size="small" aria-label="a dense table">
             <TableHead sx={{backgroundColor:"rgba(105, 105, 105, 0.1)",height:60}}>
               <TableRow>
                 <TableCell style={{width:100}} align="left">Image</TableCell>

@@ -1,17 +1,18 @@
 import { SetStateAction, useState } from "react";
 import "./App.css";
 import SearchResults from "./features/search/components/SearchResults";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField,CircularProgress } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import { useAppDispatch, useAppSelector } from "./app/hooks";
-import { fetchAsync, selectData, selectLoadedStatus } from "./features/search/searchSlice";
+import { fetchAsync, selectData, selectLoadedStatus,selectInitialStatus,selectLoadingStatus } from "./features/search/searchSlice";
 
 function App() {
   const [value, setValue] = useState("");
   const dispatch = useAppDispatch();
   const resData = useAppSelector(selectData);
   const loaded = useAppSelector(selectLoadedStatus);
-
+  const initial =useAppSelector(selectInitialStatus);
+  const loading =useAppSelector(selectLoadingStatus);
   const onChange = (event: { target: { value: SetStateAction<string>; }; }) => {
     setValue(event.target.value);
   };
@@ -30,8 +31,10 @@ function App() {
       </div>
       <div>
 
+        {(initial) && <p style={{display:"none"}}>Search for music</p>}
+        {(loading) && <div><CircularProgress/><p>Loading...</p></div>}
         {(loaded && resData?.length === 0) && <p>No records found</p>}
-        {resData?.length > 0 && <SearchResults/>}
+        {(loaded && resData?.length > 0) && <SearchResults/>}
       </div>
     </div>
   );

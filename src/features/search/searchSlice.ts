@@ -55,4 +55,6 @@ export const selectCurrentData = (state: RootState) => state.search.resData.resu
 export const selectLoadedStatus=(state:RootState)=> state.search.status==='loaded';
 export const selectFailureStatus=(state:RootState)=> state.search.status==='failed';
 export const selectLoadingStatus=(state:RootState)=> state.search.status==='loading';
+export const selectInitialStatus=(state:RootState)=> state.search.status==='initial';
+
 export default searchSlice.reducer;
