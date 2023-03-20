@@ -5,6 +5,13 @@ import { Button, TextField,CircularProgress } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import { fetchAsync, selectData, selectLoadedStatus,selectInitialStatus,selectLoadingStatus } from "./features/search/searchSlice";
+import styled from "styled-components";
+const AppElement=styled.div`
+font-family: sans-serif;
+text-align: center;
+display: flex;
+flex-direction: column;
+align-items: center;`
 
 function App() {
   const [value, setValue] = useState("");
@@ -21,7 +28,7 @@ function App() {
     dispatch(fetchAsync(value))
   };
   return (
-    <div className="App">
+    <AppElement>
       <h2>iTunes Music Search</h2>
       <div className="search-container">
         <div className="search-inner">
@@ -36,7 +43,7 @@ function App() {
         {(loaded && resData?.length === 0) && <p>No records found</p>}
         {(loaded && resData?.length > 0) && <SearchResults/>}
       </div>
-    </div>
+    </AppElement>
   );
 }
 export default App;
